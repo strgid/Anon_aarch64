@@ -17,7 +17,7 @@ public class Hole : MonoBehaviour
         front.sortingOrder = rolNum * 3 + 1;
         gameManager=gm;
     }
-    public bool GenerateAnon(GameObject AnonObject)
+    public bool GenerateAnon(GameObject AnonObject,int id,State state)
     {
         if (IsOccupied)
             return false;
@@ -28,11 +28,30 @@ public class Hole : MonoBehaviour
 
 
         Mole m = go.GetComponent<Mole>();
-        m.Init(rolNum * 3,gameManager);
+        m.Init(rolNum * 3,state,id);
         m.OnDisappear += () =>
         {
             IsOccupied = false;
         };
         return true;
+    }
+    
+    public Mole GenerateAnon(GameObject AnonObject,int id,State state,bool getmole)
+    {
+        if (IsOccupied)
+            return null;
+
+        GameObject go = Instantiate(AnonObject, GeneratePos);
+        go.transform.localPosition = Vector3.zero; 
+        IsOccupied = true;
+
+
+        Mole m = go.GetComponent<Mole>();
+        m.Init(rolNum * 3,state,id);
+        m.OnDisappear += () =>
+        {
+            IsOccupied = false;
+        };
+        return m;
     }
 }

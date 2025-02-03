@@ -6,9 +6,9 @@ public class Saki : Mole
 {
     public Animator animator;
     public AudioClip DisappearSound;
-    public override void Init(int sortingOrder,GameManager gm)
+    public override void Init(int sortingOrder,State gm,int id)
     {
-        base.Init(sortingOrder,gm);
+        base.Init(sortingOrder,gm,id);
         if (animator == null)
         {
             animator = GetComponent<Animator>();
