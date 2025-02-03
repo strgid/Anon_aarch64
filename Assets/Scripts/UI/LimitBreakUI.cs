@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class LimitBreakUI : MonoBehaviour
 {
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
     public void Show()
     {
         gameObject.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
     public void Close()
     {
         gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
     public void PlaySound(AudioClip clip)
     {

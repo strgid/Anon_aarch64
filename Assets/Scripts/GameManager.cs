@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
         {
             NowState = s;
             NowState.Init(this);
-            breakUI.Show();
         }
         NowState.Generate();
 
