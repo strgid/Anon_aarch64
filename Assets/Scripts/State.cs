@@ -13,11 +13,12 @@ public abstract class State : MonoBehaviour
     protected GameManager gameManager;
     public State Next()
     {
-        Life--;
         if (Life == 0)
         {
             return GetNextState();
         }
+        Life--;
+        Generate();
         return null;
     }
 

@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
             NowState = s;
             NowState.Init(this);
         }
-        NowState.Generate();
 
     }
 

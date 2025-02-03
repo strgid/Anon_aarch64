@@ -1380,7 +1380,7 @@ MonoBehaviour:
   States:
   - {fileID: 1450766014}
   - {fileID: 139145757}
-  breakUI: {fileID: 661628278}
+  breakUI: {fileID: 0}
   HitOverThanSwitch: 8
 --- !u!1001 &1283908972
 PrefabInstance:
@@ -1953,7 +1953,6 @@ Transform:
   - {fileID: 1155601364}
   - {fileID: 1450766013}
   - {fileID: 139145758}
-  - {fileID: 613810274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462178707
@@ -1981,11 +1980,11 @@ MonoBehaviour:
   - {fileID: 1283908974}
   - {fileID: 702503914}
   - {fileID: 1828541887}
-  NowState: {fileID: 613810275}
+  NowState: {fileID: 1155601365}
   chc: {fileID: 354488218}
   cmc: {fileID: 1384570295}
   thc: {fileID: 1721182433}
-  breakUI: {fileID: 661628278}
+  breakUI: {fileID: 0}
 --- !u!114 &1462178708
 MonoBehaviour:
   m_ObjectHideFlags: 0
