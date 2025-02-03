@@ -1172,6 +1172,9 @@ MonoBehaviour:
   - {fileID: 1570365450525579814, guid: f5f3191de231f214188ccac358d934f1, type: 3}
   - {fileID: 1570365450525579814, guid: 43967d7894cb3914b947a623d7a68350, type: 3}
   - {fileID: 1570365450525579814, guid: dd9b6199f07f043be98a3d19b8cc4d8c, type: 3}
+  States:
+  - {fileID: 1450766014}
+  HitOverThanSwitch: 8
 --- !u!1001 &1283908972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1693,7 +1696,7 @@ MonoBehaviour:
   - {fileID: 1283908974}
   - {fileID: 702503914}
   - {fileID: 1828541887}
-  NowState: {fileID: 1450766014}
+  NowState: {fileID: 1155601365}
   chc: {fileID: 354488218}
   cmc: {fileID: 1384570295}
   thc: {fileID: 1721182433}
