@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisappearTime: 0.4
   spriteRenderer: {fileID: 3929023987017498659}
+  IsQuit: 0
   animator: {fileID: 0}
   AppearSound: {fileID: 8300000, guid: e90f90c34b2e8054a8d3eb4fea07feb9, type: 3}
 --- !u!65 &2370988677949973884

@@ -53,5 +53,22 @@ public class Hole : MonoBehaviour
             IsOccupied = false;
         };
         return m;
+    }public( bool,Mole) GenerateAnonAndGet(GameObject AnonObject,int id,State state)
+    {
+        if (IsOccupied)
+            return (false,null);
+
+        GameObject go = Instantiate(AnonObject, GeneratePos);
+        go.transform.localPosition = Vector3.zero; 
+        IsOccupied = true;
+
+
+        Mole m = go.GetComponent<Mole>();
+        m.Init(rolNum * 3,state,id);
+        m.OnDisappear += () =>
+        {
+            IsOccupied = false;
+        };
+        return (true,m);
     }
 }

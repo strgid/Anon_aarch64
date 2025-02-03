@@ -34,6 +34,14 @@ public class AnonChorus : State
         generate.Clear();
         StartCoroutine(GenerateAnon(counter));
         SoundManager.Instance.PlaySound(tgw[counter % 4]);
+        if (counter % 4 == 3)
+        {
+            interval = 2f;
+        }
+        else
+        {
+            interval = 1.5f;
+        }
         counter++;
     }
 
@@ -41,8 +49,8 @@ public class AnonChorus : State
     {
         if (false)//UnityEngine.Random.Range(0, 2) == 0)
         {
-            countlast=4;
-            interval=2f;
+            countlast = 4;
+            interval = 2f;
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
                 int y = UnityEngine.Random.Range(0, 3);
@@ -74,8 +82,8 @@ public class AnonChorus : State
         }
         else
         {
-            countlast=3;
-            interval=1.5f;
+            countlast = 3;
+            interval = 1.5f;
             if (UnityEngine.Random.Range(0, 2) == 0)
             {
                 int x = UnityEngine.Random.Range(0, 4);
