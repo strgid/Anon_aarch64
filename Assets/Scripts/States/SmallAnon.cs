@@ -12,8 +12,8 @@ public class SmallAnon : State
     {
         base.Init(gm);
         counter = 0;
-        life = 12;
-        interval = 1;
+        Life = 12;
+        Interval = 1;
     }
 
     public override void Generate()
@@ -26,11 +26,11 @@ public class SmallAnon : State
         }
         if (counter % 4 == 3)
         {
-            interval = 2;
+            Interval = 2;
         }
         else
         {
-            interval = 1;
+            Interval = 1;
         }
         counter++;
     }
