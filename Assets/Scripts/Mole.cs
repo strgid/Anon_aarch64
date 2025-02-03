@@ -21,18 +21,42 @@ public abstract class Mole : MonoBehaviour
             Disappear();
         }
     }
-    public virtual void Init(int sortingOrder)
+    protected GameManager gameManager;
+    public virtual void Init(int sortingOrder,GameManager gm)
     {
-        if(spriteRenderer==null)spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = sortingOrder;
+        gameManager=gm;
     }
     public virtual void Click()
     {
         OnClick?.Invoke();
-
+        hitted = true;
     }
     public virtual void Disappear()
     {
         OnDisappear?.Invoke();
+    }
+
+    bool hitted = false;
+
+    protected virtual void OnDestroy()
+    {
+        if (hitted)
+        {
+            Hit();
+        }
+        else
+        {
+            Miss();
+        }
+    }
+    protected virtual void Hit()
+    {
+        gameManager.Hit();
+    }
+    protected virtual void Miss()
+    {
+        gameManager.Miss();
     }
 }

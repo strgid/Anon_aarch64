@@ -10,10 +10,12 @@ public class Hole : MonoBehaviour
     public int rolNum = 0;
     public SpriteRenderer behind;
      public SpriteRenderer front;
-    public void Init()
+     private GameManager gameManager;
+    public void Init(GameManager gm)
     {
         behind.sortingOrder = rolNum * 3 - 1;
         front.sortingOrder = rolNum * 3 + 1;
+        gameManager=gm;
     }
     public bool GenerateAnon(GameObject AnonObject)
     {
@@ -26,7 +28,7 @@ public class Hole : MonoBehaviour
 
 
         Mole m = go.GetComponent<Mole>();
-        m.Init(rolNum * 3);
+        m.Init(rolNum * 3,gameManager);
         m.OnDisappear += () =>
         {
             IsOccupied = false;

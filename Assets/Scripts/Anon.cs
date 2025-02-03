@@ -6,9 +6,9 @@ public class Anon : Mole
 {
     public Animator animator;
     public AudioClip AppearSound;
-    public override void Init(int sortingOrder)
+    public override void Init(int sortingOrder,GameManager gm)
     {
-        base.Init(sortingOrder);
+        base.Init(sortingOrder,gm);
         SoundManager.Instance.PlaySound(AppearSound);
         if (animator == null)
         {

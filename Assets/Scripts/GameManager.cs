@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Hole hole in holes)
         {
-            hole.Init();
+            hole.Init(this);
         }
     }
     private void Update()
@@ -50,6 +50,33 @@ public class GameManager : MonoBehaviour
     public void InitHole()
     {
 
+    }
+
+    public int ContinuousHitCount{get;private set;}=0;
+    public int ContinuousMissCount{get;private set;}=0;
+    public int TotalHitCount{get;private set;}=0;
+
+    public ScoreDisplay chc,cmc,thc;
+
+    public void Miss()
+    {
+        ContinuousHitCount=0;
+        ContinuousMissCount++;
+        DisplayScore();
+    }
+
+    public void Hit()
+    {
+        ContinuousHitCount++;
+        TotalHitCount++;
+        ContinuousMissCount=0;
+        DisplayScore();
+    }
+
+    private void DisplayScore(){
+        chc.SetScore(ContinuousHitCount);
+        cmc.SetScore(ContinuousMissCount);
+        thc.SetScore(TotalHitCount);
     }
 
 }
