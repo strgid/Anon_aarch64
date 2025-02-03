@@ -8,7 +8,7 @@ public abstract class Mole : MonoBehaviour
 
     public Action OnClick;
     public Action OnDisappear;
-    public float DisappearTime = 0.4f;
+    public float DisappearTime = 0.8f;
     private float DisappearTimer;
     public SpriteRenderer spriteRenderer;
     public bool IsQuit;
