@@ -6,6 +6,7 @@ public abstract class State : MonoBehaviour
 {
     public int life{get;protected set;}=1;
     public float interval{get;protected set;}=1;
+    public string nameOfState;
 
     public GameObject[] moles;
 
