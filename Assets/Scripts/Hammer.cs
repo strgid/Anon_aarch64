@@ -11,17 +11,20 @@ public class Hammer : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        Cursor.visible = false;
+       
         animator = GetComponent<Animator>();
     }
-
+    private void Start()
+    {
+         Cursor.visible = false;
+    }
     // 每帧更新 UI 元素的位置，使其跟随鼠标
     private void Update()
     {
         FollowCursor();
         if (Input.GetMouseButtonDown(0))
         {
-           
+            SoundManager.Instance.PlaySound("Sounds/wave");
             animator.Play("Click");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))

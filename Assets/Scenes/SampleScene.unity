@@ -1351,7 +1351,7 @@ MonoBehaviour:
   - {fileID: 1457977578}
   - {fileID: 1518243266}
   - {fileID: 1444514904}
-  Interval: 1
+  Interval: 0.8
 --- !u!114 &1462178708
 MonoBehaviour:
   m_ObjectHideFlags: 0
