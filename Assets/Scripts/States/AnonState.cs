@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnonState : State
@@ -9,12 +10,13 @@ public class AnonState : State
     int totalHit = 0;
 
     public State[] States;
-
+    public LimitBreakUI breakUI;
     public override void Init(GameManager gm)
     {
         base.Init(gm);
         counter = 0;
-        life = 4;
+        Life = 4;
+
     }
 
     public override void Generate()
@@ -46,6 +48,7 @@ public class AnonState : State
         if (totalHit >= HitOverThanSwitch)
         {
             totalHit = 0;
+            breakUI.Show();
             return States[Random.Range(0, States.Length)];
         }
         else

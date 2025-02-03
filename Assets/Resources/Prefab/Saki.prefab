@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf804b53ac4d24922bd49c6d633d5746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisappearTime: 0.4
+  DisappearTime: 0.8
   spriteRenderer: {fileID: 3929023987017498659}
   IsQuit: 0
   animator: {fileID: 0}

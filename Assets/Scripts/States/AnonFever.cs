@@ -12,7 +12,7 @@ public class AnonFever : State
     {
         base.Init(gm);
         counter = 0;
-        life = 12;
+        Life = 12;
         hitted.Clear();
         missed.Clear();
     }
@@ -25,11 +25,11 @@ public class AnonFever : State
     {
         int count = counter / 4;
 
-        interval = intervals[count];
+        Interval = intervals[count];
 
         if (counter % 4 == 3)
         {
-            interval *= 2;
+            Interval *= 2;
         }
 
         if (!generated.ContainsKey(counter)) generated[counter] = new();

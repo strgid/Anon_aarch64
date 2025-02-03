@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c03bbc83b2edd54585daceb8fe0f547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisappearTime: 0.4
+  DisappearTime: 0.8
   spriteRenderer: {fileID: 3929023987017498659}
+  IsQuit: 0
   animator: {fileID: 0}
   AppearSound: {fileID: 8300000, guid: b411e6e869fa5f2419d139366148a75c, type: 3}
 --- !u!65 &5390688638752582377
