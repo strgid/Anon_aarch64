@@ -6,10 +6,13 @@ public class Anon : Mole
 {
     public Animator animator;
     public AudioClip AppearSound;
-    public override void Init(int sortingOrder,GameManager gm)
+    public override void Init(int sortingOrder, State gm, int id)
     {
-        base.Init(sortingOrder,gm);
-        SoundManager.Instance.PlaySound(AppearSound);
+        base.Init(sortingOrder, gm, id);
+        if (AppearSound != null)
+        {
+            SoundManager.Instance.PlaySound(AppearSound);
+        }
         if (animator == null)
         {
             animator = GetComponent<Animator>();
