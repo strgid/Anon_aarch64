@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager :MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public List<GameObject> molePool = new();
     public List<Hole> holes = new();
@@ -16,7 +16,7 @@ public class GameManager :MonoBehaviour
             hole.Init();
         }
     }
-        private void Update()
+    private void Update()
     {
         GenerateTimer += Time.deltaTime;
         if (GenerateTimer > Interval)
@@ -28,16 +28,28 @@ public class GameManager :MonoBehaviour
     }
     public void GenerateNext()
     {
-        Hole h = holes[Random.Range(0, holes.Count)];
-        if (!h.GenerateAnon(molePool[(counter++)%4]))
+        bool success = false;
+        while (!success)
         {
-            GenerateNext();
+            Hole h = holes[Random.Range(0, holes.Count)];
+            success = h.GenerateAnon(molePool[counter % 4]);
         }
-       
+        counter++;
+
+        // 0.5 ¸ÅÂÊÉú³Ésaki
+        if (Random.Range(0, 1f) < 0.5f)
+        {
+            success = false;
+            while (!success)
+            {
+                Hole h = holes[Random.Range(0, holes.Count)];
+                success = h.GenerateAnon(molePool[4]);
+            }
+        }
     }
     public void InitHole()
     {
 
     }
-   
+
 }
