@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anon : Mole
+public class Saki : Mole
 {
     public Animator animator;
-    public AudioClip AppearSound;
+    public AudioClip DisappearSound;
     public override void Init(int sortingOrder,GameManager gm)
     {
         base.Init(sortingOrder,gm);
-        SoundManager.Instance.PlaySound(AppearSound);
         if (animator == null)
         {
             animator = GetComponent<Animator>();
         }
     }
+
+    bool clicked=false;
     public override void Click()
     {
+        if (clicked) return;
+        clicked=true;
         base.Click();
         Disappear();
+        SoundManager.Instance.PlaySound(DisappearSound);
     }
     public override void Disappear()
     {
@@ -27,5 +31,12 @@ public class Anon : Mole
         base.Disappear();
         animator.Play("Quit");
         TimeDelay.Instance.Delay(0.2f, () => Destroy(gameObject));
+    }
+    protected override void Hit()// ÇÃµ½¼ÆÎªmiss
+    {
+        base.Miss();
+    }
+    protected override void Miss()
+    {
     }
 }
