@@ -6,11 +6,16 @@ public class AnonState : State
 {
     int counter;
 
+    int totalHit = 0;
+
+    public State[] States;
+
     public override void Init(GameManager gm)
     {
         base.Init(gm);
         counter = 0;
         Life = 4;
+
     }
 
     public override void Generate()
@@ -33,5 +38,26 @@ public class AnonState : State
                 success = h.GenerateAnon(moles[4], 0, this);
             }
         }
+    }
+
+    public int HitOverThanSwitch = 8;
+
+    public override State GetNextState()
+    {
+        if (totalHit >= HitOverThanSwitch)
+        {
+            totalHit = 0;
+            return States[Random.Range(0, States.Length)];
+        }
+        else
+        {
+            return this;
+        }
+    }
+
+    public override void Hit(int id)
+    {
+        base.Hit(id);
+        totalHit++;
     }
 }

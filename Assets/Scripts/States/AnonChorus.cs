@@ -9,7 +9,10 @@ public class AnonChorus : State
     public State next;
 
     public AudioClip[] tgw;
+    List<Mole> generate = new();
 
+    int countlast = 0;
+    bool isMissed = false;
     public override void Init(GameManager gm)
     {
         base.Init(gm);
@@ -34,6 +37,14 @@ public class AnonChorus : State
         generate.Clear();
         StartCoroutine(GenerateAnon(counter));
         SoundManager.Instance.PlaySound(tgw[counter % 4]);
+        if (counter % 4 == 3)
+        {
+            Interval = 2f;
+        }
+        else
+        {
+            Interval = 1.5f;
+        }
         counter++;
     }
 
@@ -69,13 +80,11 @@ public class AnonChorus : State
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
     }
 
-    List<Mole> generate = new();
 
-    int countlast = 0;
 
+   
     public override void Hit(int id)
     {
         countlast--;
@@ -86,7 +95,7 @@ public class AnonChorus : State
             gameManager.Hit();
         }
     }
-    bool isMissed = false;
+   
 
     public override void Miss(int id)
     {
