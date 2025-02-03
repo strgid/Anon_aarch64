@@ -14,10 +14,10 @@ public class AnonChorus : State
     {
         base.Init(gm);
         counter = 0;
-        life = 12;
+        Life = 12;
         hitted = false;
-        missed = false;
-        interval = 1.5f;
+        isMissed = false;
+        Interval = 1.5f;
     }
 
     public override State GetNextState()
@@ -30,7 +30,7 @@ public class AnonChorus : State
     public override void Generate()
     {
         hitted = false;
-        missed = false;
+        isMissed = false;
         generate.Clear();
         StartCoroutine(GenerateAnon(counter));
         SoundManager.Instance.PlaySound(tgw[counter % 4]);
@@ -39,72 +39,37 @@ public class AnonChorus : State
 
     IEnumerator GenerateAnon(int counter)
     {
-        if (false)//UnityEngine.Random.Range(0, 2) == 0)
+        countlast = 3;
+        Interval = 1.5f;
+        if (UnityEngine.Random.Range(0, 2) == 0)
         {
-            countlast=4;
-            interval=2f;
-            if (UnityEngine.Random.Range(0, 2) == 0)
+            int x = UnityEngine.Random.Range(0, 4);
+            for (int y = 0; y < 3; y++)
             {
-                int y = UnityEngine.Random.Range(0, 3);
-                for (int x = 0; x < 4; x++)
+                Hole h = gameManager.holes[x + y * 4];
+                Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
+                if (m != null)
                 {
-                    Hole h = gameManager.holes[x + y * 4];
-                    Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
-                    if (m != null)
-                    {
-                        generate.Add(m);
-                    }
-                    yield return new WaitForSeconds(0.1f);
+                    generate.Add(m);
                 }
-            }
-            else
-            {
-                int y = UnityEngine.Random.Range(0, 3);
-                for (int x = 3; x >= 0; x--)
-                {
-                    Hole h = gameManager.holes[x + y * 4];
-                    Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
-                    if (m != null)
-                    {
-                        generate.Add(m);
-                    }
-                    yield return new WaitForSeconds(0.1f);
-                }
+                yield return new WaitForSeconds(0.1f);
             }
         }
         else
         {
-            countlast=3;
-            interval=1.5f;
-            if (UnityEngine.Random.Range(0, 2) == 0)
+            int x = UnityEngine.Random.Range(0, 4);
+            for (int y = 2; y >= 0; y--)
             {
-                int x = UnityEngine.Random.Range(0, 4);
-                for (int y = 0; y < 3; y++)
+                Hole h = gameManager.holes[x + y * 4];
+                Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
+                if (m != null)
                 {
-                    Hole h = gameManager.holes[x + y * 4];
-                    Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
-                    if (m != null)
-                    {
-                        generate.Add(m);
-                    }
-                    yield return new WaitForSeconds(0.1f);
+                    generate.Add(m);
                 }
-            }
-            else
-            {
-                int x = UnityEngine.Random.Range(0, 4);
-                for (int y = 2; y >= 0; y--)
-                {
-                    Hole h = gameManager.holes[x + y * 4];
-                    Mole m = h.GenerateAnon(moles[counter % 4], x, this, true);
-                    if (m != null)
-                    {
-                        generate.Add(m);
-                    }
-                    yield return new WaitForSeconds(0.1f);
-                }
+                yield return new WaitForSeconds(0.1f);
             }
         }
+
     }
 
     List<Mole> generate = new();
@@ -121,14 +86,14 @@ public class AnonChorus : State
             gameManager.Hit();
         }
     }
-    bool missed = false;
+    bool isMissed = false;
 
     public override void Miss(int id)
     {
         if (countlast > 0)
         {
-            if (missed) return;
-            missed = true;
+            if (isMissed) return;
+            isMissed = true;
             if (!hitted)
             {
                 gameManager.Miss();

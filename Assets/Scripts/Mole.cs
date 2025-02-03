@@ -11,8 +11,12 @@ public abstract class Mole : MonoBehaviour
     public float DisappearTime = 0.8f;
     private float DisappearTimer;
     public SpriteRenderer spriteRenderer;
-    public bool IsQuit;
-    public int id{get;private set;}
+    public bool IsQuit; 
+    public int ID{get;private set;}
+    
+    bool hitted = false;
+    protected State state;
+   
     private void Update()
     {
         DisappearTimer += Time.deltaTime;
@@ -22,13 +26,13 @@ public abstract class Mole : MonoBehaviour
             Disappear();
         }
     }
-    protected State state;
+    
     public virtual void Init(int sortingOrder,State gm,int id)
     {
         if (spriteRenderer == null) spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = sortingOrder;
         state=gm;
-        this.id=id;
+        this.ID=id;
     }
     public virtual void Click()
     {
@@ -42,7 +46,7 @@ public abstract class Mole : MonoBehaviour
         OnDisappear?.Invoke();
     }
 
-    bool hitted = false;
+    
 
     protected virtual void OnDestroy()
     {
@@ -57,10 +61,10 @@ public abstract class Mole : MonoBehaviour
     }
     protected virtual void Hit()
     {
-        state.Hit(id);
+        state.Hit(ID);
     }
     protected virtual void Miss()
     {
-        state.Miss(id);
+        state.Miss(ID);
     }
 }

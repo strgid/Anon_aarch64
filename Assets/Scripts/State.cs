@@ -4,18 +4,19 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    public int life{get;protected set;}=1;
-    public float interval{get;protected set;}=1;
+   
+    public int Life { get; protected set; } = 1; //持续周期
+    public float Interval { get; protected set; } = 1;//间隔时长
 
     public GameObject[] moles;
-
+    protected GameManager gameManager;
     public State Next()
     {
-        if(life==0){
+        Life--;
+        if (Life == 0)
+        {
             return GetNextState();
         }
-        life--;
-        Generate();
         return null;
     }
 
@@ -23,7 +24,7 @@ public abstract class State : MonoBehaviour
 
     public virtual void Init(GameManager gm)
     {
-        gameManager=gm;
+        gameManager = gm;
     }
     public virtual void Hit(int id)
     {
@@ -33,11 +34,12 @@ public abstract class State : MonoBehaviour
     {
         gameManager.Miss();
     }
+    //下一个状态
     public virtual State GetNextState()
     {
         return this;
     }
 
-    protected GameManager gameManager;
+
 
 }

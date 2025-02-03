@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +8,15 @@ public class GameManager : MonoBehaviour
     public List<Hole> holes = new();
 
     private float GenerateTimer;
+    public State NowState;
+    #region 计分相关
+    public int ContinuousHitCount { get; private set; } = 0;
+    public int ContinuousMissCount { get; private set; } = 0;
+    public int TotalHitCount { get; private set; } = 0;
 
+    public ScoreDisplay chc, cmc, thc;
+    #endregion
+    public LimitBreakUI breakUI;
     private void Start()
     {
         foreach (Hole hole in holes)
@@ -19,40 +28,28 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         GenerateTimer += Time.deltaTime;
-        if (GenerateTimer > NowState.interval)
+        if (GenerateTimer > NowState.Interval)
         {
-            GenerateTimer -= NowState.interval;
-            if (GenerateTimer > NowState.interval)
-            {
-                GenerateTimer = 0;
-            }
+            GenerateTimer = 0;
             GenerateNext();
-
         }
     }
     public void GenerateNext()
     {
-        if (NowState != null)
+        if (NowState == null) return;
+        
+        //获取下一个状态
+        State s = NowState.Next();
+        if (s != null)
         {
-            State s = NowState.Next();
-            if (s != null)
-            {
-                NowState = s;
-                NowState.Init(this);
-            }
+            NowState = s;
+            NowState.Init(this);
+            breakUI.Show();
         }
-    }
-    public State NowState;
-    public void InitHole()
-    {
+        NowState.Generate();
 
     }
 
-    public int ContinuousHitCount { get; private set; } = 0;
-    public int ContinuousMissCount { get; private set; } = 0;
-    public int TotalHitCount { get; private set; } = 0;
-
-    public ScoreDisplay chc, cmc, thc;
 
     public void Miss()
     {

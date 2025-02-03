@@ -13,6 +13,7 @@ public class ScoreDisplay : MonoBehaviour
 
     public string fwd,bwd;
     public void SetScore(int score){
+        if (text == null) return;
         text.text=fwd+score.ToString()+bwd;
     }
 }

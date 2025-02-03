@@ -10,7 +10,7 @@ public class AnonState : State
     {
         base.Init(gm);
         counter = 0;
-        life=4;
+        Life = 4;
     }
 
     public override void Generate()
