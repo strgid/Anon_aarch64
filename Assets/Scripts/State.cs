@@ -7,16 +7,18 @@ public abstract class State : MonoBehaviour
    
     public int Life { get; protected set; } = 1; //持续周期
     public float Interval { get; protected set; } = 1;//间隔时长
+    public string nameOfState;
 
     public GameObject[] moles;
     protected GameManager gameManager;
     public State Next()
     {
-        Life--;
         if (Life == 0)
         {
             return GetNextState();
         }
+        Life--;
+        Generate();
         return null;
     }
 
