@@ -12,82 +12,38 @@ public class AnonFever : State
     {
         base.Init(gm);
         counter = 0;
-        Life = 12;
-        hitted.Clear();
-        missed.Clear();
+        Life = 20;
     }
 
-    public float[] intervals;
-
-    Dictionary<int, List<Mole>> generated = new();
+    public float DefaultInterval=1 ,IntervalDiscount=0.9f;
 
     public override void Generate()
     {
-        int count = counter / 4;
+        int count = counter;
 
-        Interval = intervals[count];
+        Interval = DefaultInterval*Mathf.Pow(IntervalDiscount,count);
 
-        if (counter % 4 == 3)
-        {
-            Interval *= 2;
+        if(Interval<0.5f){
+            Interval=0.5f;
+        }
+        if(Life==0){
+            Interval=DefaultInterval;
         }
 
-        if (!generated.ContainsKey(counter)) generated[counter] = new();
-        generated[counter].Clear();
+        bool success = false;
 
-        for (int i = 0; i < 2 * (count + 1); i++)
+        while (!success)
         {
-            bool success = false;
-
-            while (!success)
-            {
-                Hole h = gameManager.holes[Random.Range(0, gameManager.holes.Count)];
-                (bool s, Mole mole) = h.GenerateAnonAndGet(moles[counter % 4], counter, this);
-                success = s;
-
-                if (mole == null) continue;
-                generated[counter].Add(mole);
-            }
+            Hole h = gameManager.holes[Random.Range(0, gameManager.holes.Count)];
+            (bool s, Mole mole) = h.GenerateAnonAndGet(moles[counter % 4], counter, this);
+            success = s;
         }
+
         counter++;
     }
 
     public override State GetNextState()
     {
         return NextState;
-    }
-
-    List<int> hitted = new();
-    List<int> missed = new();
-
-    public bool DownTogether = false;
-
-    public override void Hit(int id)
-    {
-        if (!hitted.Contains(id))
-        {
-            hitted.Add(id);
-            if (DownTogether)
-            {
-                foreach (var i in generated[id])
-                {
-                    Debug.Log(1);
-                    i.Disappear();
-                }
-            }
-            base.Hit(id);
-        }
-    }
-
-    public override void Miss(int id)
-    {
-        if (!hitted.Contains(id))
-        {
-            if (!missed.Contains(id))
-            {
-                missed.Add(id);
-                base.Miss(id);
-            }
-        }
     }
 }

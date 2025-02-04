@@ -207,11 +207,8 @@ MonoBehaviour:
   - {fileID: 1570365450525579814, guid: f5f3191de231f214188ccac358d934f1, type: 3}
   - {fileID: 1570365450525579814, guid: 43967d7894cb3914b947a623d7a68350, type: 3}
   NextState: {fileID: 1155601365}
-  intervals:
-  - 1
-  - 0.75
-  - 0.5
-  DownTogether: 0
+  DefaultInterval: 1
+  IntervalDiscount: 0.9
 --- !u!4 &139145758
 Transform:
   m_ObjectHideFlags: 0
@@ -2679,7 +2676,6 @@ Transform:
   - {fileID: 1155601364}
   - {fileID: 1450766013}
   - {fileID: 139145758}
-  - {fileID: 559955360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462178707
@@ -2707,7 +2703,7 @@ MonoBehaviour:
   - {fileID: 1283908974}
   - {fileID: 702503914}
   - {fileID: 1828541887}
-  NowState: {fileID: 1155601365}
+  NowState: {fileID: 139145757}
   MaxLife: 5
   chc: {fileID: 354488218}
   cmc: {fileID: 1384570295}
