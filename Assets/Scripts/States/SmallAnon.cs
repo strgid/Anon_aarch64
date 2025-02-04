@@ -24,7 +24,7 @@ public class SmallAnon : State
             Hole h = gameManager.holes[Random.Range(0, gameManager.holes.Count)];
             success = h.GenerateAnon(moles[counter % 4], 0, this);
         }
-        if (counter % 4 == 3)
+        if (counter % 4 == 3&&Life>0)
         {
             Interval = 2;
         }
