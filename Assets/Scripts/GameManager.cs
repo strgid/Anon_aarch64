@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
     {
         isLose = true;
         videoPlayer.gameObject.SetActive(true);
+        SoundManager.Instance.MuteSound();
         SoundManager.Instance.MuteMusic();
     }
 }

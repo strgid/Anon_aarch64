@@ -19,6 +19,10 @@ public class SoundManager :BaseMonoManager<SoundManager>
     {
         m_AudioSource.PlayOneShot(clip,volume);
     }
+    public void MuteSound()
+    {
+        m_AudioSource.mute = true;
+    }
     public void MuteMusic()
     {
         musicAudioSource.mute = true;
