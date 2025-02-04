@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private float GenerateTimer;
     public State NowState;
     #region 计分相关
+    public int MaxLife = 5;
+    public int Life { get; private set; } = 5;//生命值
     public int ContinuousHitCount { get; private set; } = 0;
     public int ContinuousMissCount { get; private set; } = 0;
     public int TotalHitCount { get; private set; } = 0;
@@ -17,6 +19,13 @@ public class GameManager : MonoBehaviour
     public ScoreDisplay chc, cmc, thc;
     #endregion
     public LimitBreakUI breakUI;
+    public HPBar hpBar;
+
+    #region 失败视频
+    public GameObject videoPlayer;
+    
+    private bool isLose;
+    #endregion
     private void Start()
     {
         foreach (Hole hole in holes)
@@ -27,6 +36,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (isLose) return;
+
         GenerateTimer += Time.deltaTime;
         if (GenerateTimer > NowState.Interval)
         {
@@ -37,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void GenerateNext()
     {
         if (NowState == null) return;
-        
+          NowState.Generate();
         //获取下一个状态
         State s = NowState.Next();
         if (s != null)
@@ -45,13 +56,18 @@ public class GameManager : MonoBehaviour
             NowState = s;
             NowState.Init(this);
         }
-        NowState.Generate();
+      
 
     }
 
 
     public void Miss()
     {
+        Life--;
+        hpBar.SetHP(Life/(float)MaxLife);
+        if(Life == 0) LoseGame();
+
+        SoundManager.Instance.PlaySound("Sounds/error");
         ContinuousHitCount = 0;
         ContinuousMissCount++;
         DisplayScore();
@@ -71,5 +87,10 @@ public class GameManager : MonoBehaviour
         cmc.SetScore(ContinuousMissCount);
         thc.SetScore(TotalHitCount);
     }
-
+    public void LoseGame()
+    {
+        isLose = true;
+        videoPlayer.gameObject.SetActive(true);
+        SoundManager.Instance.MuteMusic();
+    }
 }

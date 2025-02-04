@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager :BaseMonoManager<SoundManager>
 {
     private AudioSource m_AudioSource;
+    public AudioSource musicAudioSource;
     private void Start()
     {
         m_AudioSource = GetComponent<AudioSource>();
@@ -17,5 +18,9 @@ public class SoundManager :BaseMonoManager<SoundManager>
     public void PlaySound(AudioClip clip,float volume = 1f)
     {
         m_AudioSource.PlayOneShot(clip,volume);
+    }
+    public void MuteMusic()
+    {
+        musicAudioSource.mute = true;
     }
 }
