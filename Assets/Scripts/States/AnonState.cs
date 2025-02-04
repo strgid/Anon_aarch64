@@ -33,7 +33,7 @@ public class AnonState : State
             success = h.GenerateAnon(moles[counter % 4], counter, this);
         }
 
-        // 0.5 ¸ÅÂÊÉú³Ésaki
+        // 0.5 ?????¨²??saki
         if (Random.Range(0, 1f) < 0.5f)
         {
             success = false;
@@ -53,7 +53,8 @@ public class AnonState : State
         if (totalHit >= HitOverThanSwitch)
         {
             totalHit = 0;
-            breakUI.Show();
+            int next = Random.Range(0, States.Length);
+            breakUI.Show(next);
             LightManager.EnableColorMode();
             totalCounter++;
             return States[totalCounter% States.Length];

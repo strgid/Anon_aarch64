@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LimitBreakUI : MonoBehaviour
 {
-    
-    public void Show()
+    public Sprite[] sprites;
+    public Image content;
+    public void Show(int index)
     {
+        index = Mathf.Clamp(index, 0, sprites.Length-1);
+        content.sprite = sprites[index];
+
         gameObject.SetActive(true);
       
     }

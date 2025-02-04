@@ -34,7 +34,14 @@ public class Saki : Mole
     }
     protected override void Hit()// ÇÃµ½¼ÆÎªmiss
     {
+   
         base.Miss();
+        GameManager mgr = base.state.GetManager();
+        if (mgr.Life == 0)
+        {
+            mgr.isSakiHit = true;
+        }
+
     }
     protected override void Miss()
     {
