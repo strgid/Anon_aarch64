@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884321289a20144169ad83690855b867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfState: AnonFever
+  nameOfState: 
   moles:
   - {fileID: 1570365450525579814, guid: 1c416551b1e49c9488c164c4a78abdc1, type: 3}
   - {fileID: 1570365450525579814, guid: 3eeba4731d97d4c468e2fa826ffc6e19, type: 3}
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263c249356b9f48259b0ada99a1f86ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfState: AnonState
+  nameOfState: 
   moles:
   - {fileID: 1570365450525579814, guid: 1c416551b1e49c9488c164c4a78abdc1, type: 3}
   - {fileID: 1570365450525579814, guid: 3eeba4731d97d4c468e2fa826ffc6e19, type: 3}
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   States:
   - {fileID: 1450766014}
   - {fileID: 139145757}
-  breakUI: {fileID: 0}
+  breakUI: {fileID: 661628278}
   HitOverThanSwitch: 8
 --- !u!1 &1262863036
 GameObject:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8122e38550c742c19ded183fcf73db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfState: AnonChorus
+  nameOfState: 
   moles:
   - {fileID: 1570365450525579814, guid: c74f0968b6d6e4f77ba4a99c3e34cbc8, type: 3}
   - {fileID: 1570365450525579814, guid: 8e21968de04d443fd9ae60702f5286b9, type: 3}

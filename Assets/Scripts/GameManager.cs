@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public ScoreDisplay chc, cmc, thc;
     #endregion
-    public LimitBreakUI breakUI;
     public HPBar hpBar;
 
     #region 失败视频
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
     public void GenerateNext()
     {
         if (NowState == null) return;
-          NowState.Generate();
+        
         //获取下一个状态
         State s = NowState.Next();
         if (s != null)
