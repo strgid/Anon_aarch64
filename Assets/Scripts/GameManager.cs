@@ -135,4 +135,9 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    public float GetNowTimer()
+    {
+        return GenerateTimer;
+    }
 }

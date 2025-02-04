@@ -7,6 +7,7 @@ public class AnonState : State
 {
     public LightManager LightManager;
     int counter;
+    int totalCounter=-1;
 
     int totalHit = 0;
 
@@ -54,7 +55,8 @@ public class AnonState : State
             totalHit = 0;
             breakUI.Show();
             LightManager.EnableColorMode();
-            return States[Random.Range(0, States.Length)];
+            totalCounter++;
+            return States[totalCounter% States.Length];
         }
         else
         {
@@ -71,7 +73,7 @@ public class AnonState : State
     public override void Miss(int id)
     {
         if(missed.Contains(id)) return;
-        
+
         missed.Add(id);
         base.Miss(id);
     }

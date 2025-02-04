@@ -1751,6 +1751,7 @@ MonoBehaviour:
   - {fileID: 1570365450525579814, guid: dd9b6199f07f043be98a3d19b8cc4d8c, type: 3}
   LightManager: {fileID: 619394803}
   States:
+  - {fileID: 1591883867}
   - {fileID: 1450766014}
   - {fileID: 139145757}
   breakUI: {fileID: 661628278}
@@ -2676,6 +2677,7 @@ Transform:
   - {fileID: 1155601364}
   - {fileID: 1450766013}
   - {fileID: 139145758}
+  - {fileID: 1591883866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462178707
@@ -2989,6 +2991,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56628fbd5ee68c4cbf243ad94bc7fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1591883865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591883866}
+  - component: {fileID: 1591883867}
+  m_Layer: 0
+  m_Name: AnonSort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1591883866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591883865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462178706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1591883867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591883865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02857e4594c6a4ed7bccabe3c72b6b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfState: 
+  moles:
+  - {fileID: 1570365450525579814, guid: 88f0c3bc44ed94d928c9f063d7d55c30, type: 3}
+  - {fileID: 1570365450525579814, guid: fbbf696532f454630bb8ef409e84992a, type: 3}
+  - {fileID: 1570365450525579814, guid: f96edda884529446c8fb0870b58eb22c, type: 3}
+  - {fileID: 1570365450525579814, guid: 8d4597f5f6e294832872ac2ed73eb32e, type: 3}
+  NextState: {fileID: 1155601365}
 --- !u!1 &1605239282
 GameObject:
   m_ObjectHideFlags: 0
