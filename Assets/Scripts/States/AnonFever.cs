@@ -12,7 +12,7 @@ public class AnonFever : State
     {
         base.Init(gm);
         counter = 0;
-        Life = 20;
+        Life = 16;
     }
 
     public float DefaultInterval=1 ,IntervalDiscount=0.9f;
