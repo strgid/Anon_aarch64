@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AnonState : State
 {
+    public LightManager LightManager;
     int counter;
 
     int totalHit = 0;
@@ -16,7 +17,7 @@ public class AnonState : State
         base.Init(gm);
         counter = 0;
         Life = 4;
-
+        LightManager.DisableColorMode();
     }
 
     public override void Generate()
@@ -49,6 +50,7 @@ public class AnonState : State
         {
             totalHit = 0;
             breakUI.Show();
+            LightManager.EnableColorMode();
             return States[Random.Range(0, States.Length)];
         }
         else

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class Hammer : MonoBehaviour
@@ -6,6 +7,7 @@ public class Hammer : MonoBehaviour
     private RectTransform rectTransform;
     private Animator animator;
     public GameObject bonk;
+    public CinemachineImpulseSource impulseSource;
 
     // 初始化时获取 RectTransform 组件
     private void Awake()
@@ -36,6 +38,7 @@ public class Hammer : MonoBehaviour
                     SoundManager.Instance.PlaySound("Sounds/bonk");
                     Bonk();
                     m.Click();
+                    impulseSource.GenerateImpulse();
                 }
             }
         }
