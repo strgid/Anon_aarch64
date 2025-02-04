@@ -19,7 +19,7 @@ public abstract class Mole : MonoBehaviour
    
     private void Update()
     {
-        DisappearTimer += Time.deltaTime;
+        DisappearTimer += Time.deltaTime * GameManager.Multiplier;
         if (DisappearTimer > DisappearTime)
         {
             DisappearTimer = -10;
