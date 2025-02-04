@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject failureTextsGameObject;
     public VideManager vManager;
     private GameState gameState;
-    [HideInInspector] public Text totalHitText;
-    [HideInInspector] public Text MaxContinusHitText;
+     public Text totalHitText;
+     public Text MaxContinusHitText;
     #endregion
     #region 难度曲线
     [Header("难度调整")]

@@ -1208,6 +1208,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e910e75d1ba81f249aab03850391064e, type: 3}
   - {fileID: 21300000, guid: 33507222514213e48b59c998c8ffd6a4, type: 3}
   - {fileID: 21300000, guid: 0928c3c1fd922144586a61c5e7c6538e, type: 3}
+  - {fileID: 21300000, guid: 7e908a20e261bff49adb79a79c72e6b0, type: 3}
+  clips:
+  - {fileID: 8300000, guid: d2190bdf3290f104ab1cc38971944e54, type: 3}
+  - {fileID: 8300000, guid: ec2461094186e354d9aad2cbe9d223cf, type: 3}
+  - {fileID: 8300000, guid: 53b4b850ea661a74aab8407a67d44806, type: 3}
+  - {fileID: 8300000, guid: e3bc23f2faed498468a9b3b01b3d5dcc, type: 3}
   content: {fileID: 1284510113}
 --- !u!1001 &702503912
 PrefabInstance:
@@ -1633,7 +1639,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4f1a1e9d6f82f534cab4b1be90e6752f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1717,7 +1723,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1812,7 +1818,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1892,7 +1898,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3175,7 +3181,7 @@ MonoBehaviour:
       outWeight: 0.24722223
     - serializedVersion: 3
       time: 1
-      value: 1.3
+      value: 1.6
       inSlope: 0.09242711
       outSlope: 0.09242711
       tangentMode: 0
