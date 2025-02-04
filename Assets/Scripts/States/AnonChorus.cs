@@ -83,18 +83,6 @@ public class AnonChorus : State
     }
 
 
-
-   
-    public override void Hit(int id)
-    {
-        countlast--;
-        if (countlast == 0)
-        {
-            if (hitted) return;
-            hitted = true;
-            gameManager.Hit();
-        }
-    }
    
 
     public override void Miss(int id)
