@@ -2703,7 +2703,7 @@ MonoBehaviour:
   - {fileID: 1283908974}
   - {fileID: 702503914}
   - {fileID: 1828541887}
-  NowState: {fileID: 139145757}
+  NowState: {fileID: 1155601365}
   MaxLife: 5
   chc: {fileID: 354488218}
   cmc: {fileID: 1384570295}

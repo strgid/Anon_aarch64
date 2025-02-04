@@ -18,7 +18,10 @@ public class AnonState : State
         counter = 0;
         Life = 4;
         LightManager.DisableColorMode();
+        missed.Clear();
     }
+
+    private List<int> missed=new();
 
     public override void Generate()
     {
@@ -26,9 +29,8 @@ public class AnonState : State
         while (!success)
         {
             Hole h = gameManager.holes[Random.Range(0, gameManager.holes.Count)];
-            success = h.GenerateAnon(moles[counter % 4], 0, this);
+            success = h.GenerateAnon(moles[counter % 4], counter, this);
         }
-        counter++;
 
         // 0.5 ¸ÅÂÊÉú³Ésaki
         if (Random.Range(0, 1f) < 0.5f)
@@ -37,9 +39,10 @@ public class AnonState : State
             while (!success)
             {
                 Hole h = gameManager.holes[Random.Range(0, gameManager.holes.Count)];
-                success = h.GenerateAnon(moles[4], 0, this);
+                success = h.GenerateAnon(moles[4], counter, this);
             }
         }
+        counter++;
     }
 
     public int HitOverThanSwitch = 8;
@@ -63,5 +66,13 @@ public class AnonState : State
     {
         base.Hit(id);
         totalHit++;
+    }
+
+    public override void Miss(int id)
+    {
+        if(missed.Contains(id)) return;
+        
+        missed.Add(id);
+        base.Miss(id);
     }
 }
