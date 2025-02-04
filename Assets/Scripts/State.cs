@@ -36,6 +36,10 @@ public abstract class State : MonoBehaviour
     {
         gameManager.Miss();
     }
+    public GameManager GetManager()
+    {
+        return gameManager;
+    }
     //ÏÂÒ»¸ö×´Ì¬
     public virtual State GetNextState()
     {

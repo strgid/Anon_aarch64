@@ -52,9 +52,10 @@ public class AnonState : State
         if (totalHit >= HitOverThanSwitch)
         {
             totalHit = 0;
-            breakUI.Show();
+            int next = Random.Range(0, States.Length);
+            breakUI.Show(next);
             LightManager.EnableColorMode();
-            return States[Random.Range(0, States.Length)];
+            return States[next];
         }
         else
         {
