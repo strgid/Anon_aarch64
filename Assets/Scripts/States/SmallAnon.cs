@@ -13,7 +13,7 @@ public class SmallAnon : State
         base.Init(gm);
         counter = 0;
         Life = 12;
-        Interval = 1;
+        Interval = 0.6f;
     }
 
     public override void Generate()

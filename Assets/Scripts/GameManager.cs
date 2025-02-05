@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour
     private float curveX;
     public float speed;//难度提升速度
     #endregion
-
+    private void Awake()
+    {
+        Application.targetFrameRate = 240;
+    }
     private void Start()
     {
         foreach (Hole hole in holes)
