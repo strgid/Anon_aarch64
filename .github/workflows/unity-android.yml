@@ -31,7 +31,7 @@ jobs:
           targetPlatform: Android
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: Anon-APK
           path: build/Android/*.apk
