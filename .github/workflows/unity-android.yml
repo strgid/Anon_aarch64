@@ -14,41 +14,25 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # 升级到最新版本
+        uses: actions/checkout@v4  # 确保其他 Actions 也升级到最新版本
 
-      - name: Cache Unity Library
+      - name: Cache Library
         uses: actions/cache@v3
         with:
-          path: |
-            Library
-            Assets/AssetStore-5.x  # 可选：缓存资源商店内容
-          key: unity-cache-${{ runner.os }}-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
           restore-keys: |
-            unity-cache-${{ runner.os }}-
-
-      - name: Activate Unity License
-        uses: game-ci/unity-activate@v2  # 关键步骤：激活 Unity 许可证
-        with:
-          unityVersion: 2022.3.34f1  # 确保版本号正确（移除末尾的 'c1'）
-          projectPath: .  # 指定项目路径（如果是子目录需调整）
+            Library-${{ runner.os }}-
 
       - name: Build Android APK
         uses: game-ci/unity-builder@v2
         with:
-          unityVersion: 2022.3.34f1  # 必须与激活步骤的版本一致
+          unityVersion: 2022.3.34f1  # 确认版本号正确
           targetPlatform: Android
-          buildName: Anon-Android
-          outputPath: build/Android
-          # 以下为签名配置（需在仓库 Secrets 中设置）
-          androidKeystoreName: ${{ secrets.ANDROID_KEYSTORE_NAME }}
-          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
-          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
-          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # 修复为 v4
         with:
           name: Anon-APK
-          path: build/Android/*.apk  # 匹配所有 APK 文件
-          retention-days: 7  # 设置产物保留时间
+          path: build/Android/*.apk
+          retention-days: 7  # 可选：限制产物保留时间
